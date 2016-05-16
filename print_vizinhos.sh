@@ -14,12 +14,12 @@ n=$(( 2 * ${raio} + 1 ))
 meio=$(( $raio + 1 ))
 
 cont=1
-ii=${meio}
-if=${meio}
+i_i=${meio}
+i_f=${meio}
 
 for ((j=1;j<=${n};j++))
 do
-    for ((i=${ii};i<=${if};i++))
+    for ((i=${i_i};i<=${i_f};i++))
     do
         pj=$(( $j - $meio + ${ponto_j} ))
         pi=$(( $i - $meio + ${ponto_i} ))
@@ -31,10 +31,10 @@ do
     
     if [ $cont -le $meio ]
     then
-        (( ii-- ))
-        (( if++ ))
+        (( i_i-- ))
+        (( i_f++ ))
     else
-        (( ii++ ))
-        (( if-- ))
+        (( i_i++ ))
+        (( i_f-- ))
     fi
 done
