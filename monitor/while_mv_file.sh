@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# monitora processo e diretorio buscando se novos arquivos foram criados
+#
 
 # nome do processo monitorado
 PROCESSO='zumbi.sh'
@@ -12,11 +15,11 @@ do
     sleep 1
     
     # conta o numero de his_*.nc
-    ncfiles=`ls his_*.nc | wc -l`
+    ncfiles=$(ls his_*.nc | wc -l)
     
     if [ "$ncfiles" -gt "1" ]; 
     then
-        MVFILE=`ls -1 his_0*.nc |head -1`
+        MVFILE=$(ls -1 his_0*.nc |head -1)
         echo "Opa! vou mover o arquivo: " ${MVFILE}
         echo "mv $MVFILE ../diretorio/. "
     else
