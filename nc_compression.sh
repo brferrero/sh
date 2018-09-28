@@ -4,8 +4,16 @@
 #
 
 MATCH=$1
-for f in $(ls *${MATCH}*.nc)
-do
-    echo "Compressing " ${f} "..." 
-    ncks -4 --deflate 1 -O ${f} ${f}
-done
+
+FILELIST=$(ls *${MATCH}*.nc)
+
+if [ ! -z "$FILELIST" ]
+then
+    for f in ${FILELIST}
+    do
+        echo "Compressing " ${f} "..." 
+        echo ncks -4 --deflate 1 -O ${f} ${f}
+    done
+else
+    echo "No file to compress"
+fi
